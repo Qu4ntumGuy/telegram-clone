@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Roboto", sans-serif;
+  color-scheme: light;
+  body {
+    @apply bg-[#181818] text-[#f0f0f0];
+  }
+}
+
+:root {
+  @apply bg-[#181818];
+}
