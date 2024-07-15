@@ -10,26 +10,29 @@ function Sidebar() {
   const [channels, setChannels] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // const handleScroll = () => {
-  //   const windowHeight = window.innerHeight;
-  //   const documentHeight = document.body.scrollHeight;
-  //   const scrollTop = window.scrollY;
-  //   if (scrollTop + windowHeight >= documentHeight - 100) {
-  //     if (!isLoading) {
-  //       setIsLoading(true);
-  //       setPage((prev) => prev + 1);
-  //       fetchChannels();
-  //     }
-  //   }
-  // };
+  const handleScroll = () => {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.body.scrollHeight;
+    const scrollTop = window.scrollY;
+    if (scrollTop + windowHeight >= documentHeight - 1000) {
+      if (!isLoading) {
+        setIsLoading(true);
+        setPage((prev) => prev + 1);
+        fetchChannels().then((data) => {
+          setChannels((prev) => [...prev, ...data]);
+          setIsLoading(false);
+        });
+      }
+    }
+  };
 
-  // useEffect(() => {
-  //   handleScroll();
-  //   window.addEventListener("scroll", handleScroll); // Add event listener
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll); // Remove listener on unmount
-  //   };
-  // }, [channels, isLoading]); // Dependency array for useEffect
+  useEffect(() => {
+    handleScroll();
+    window.addEventListener("scroll", handleScroll); // Add event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll); // Remove listener on unmount
+    };
+  }, [channels, isLoading]); // Dependency array for useEffect
 
   const fetchChannels = async () => {
     try {
@@ -41,9 +44,10 @@ function Sidebar() {
           },
         }
       );
-      //   console.log(res);
+      console.log(res);
       setChannels(res.data.data.data);
-      return res;
+      const data = res.data.data.data;
+      return data;
       console.log(res.data.data.data);
     } catch (error) {
       console.log(error);
@@ -100,7 +104,10 @@ function Sidebar() {
           </form>
         </div>
       </div>
-      <div className="overflow-y-auto px-2 h-[55rem]">
+      <div
+        onScroll={handleScroll}
+        className="overflow-y-auto px-2 scrollbar-hide h-[55rem]"
+      >
         {channels.map((channel) => (
           <Chat
             key={channel.created_at}

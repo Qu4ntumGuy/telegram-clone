@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 function Chat({ name, profile, color, time, message, chatId }) {
-  console.log(color);
+  // console.log(color);
 
   function formatDateTime(input) {
     const date = new Date(input);
@@ -38,6 +38,15 @@ function Chat({ name, profile, color, time, message, chatId }) {
   const today = new Date();
 
   const openMessages = () => {
+    if (localStorage.getItem("data")) {
+      localStorage.removeItem("data");
+    } else {
+      localStorage.setItem(
+        "data",
+        JSON.stringify({ name, profile, color, time, message, chatId })
+      );
+    }
+
     navigate(`/k/${chatId}`);
   };
 

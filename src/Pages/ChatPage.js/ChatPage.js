@@ -21,7 +21,7 @@ function ChatPage() {
 
   const chatId = useParams().id;
 
-  console.log(chatId);
+  // console.log(chatId);
 
   const fetchMessages = async () => {
     try {
@@ -30,7 +30,7 @@ function ChatPage() {
       );
       //   console.log(res);
       setMessages(res.data.data);
-      console.log(res.data.data);
+      // console.log(res.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +63,7 @@ function ChatPage() {
       //   style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="top-0 sticky mb-auto h-14 bg-[#202020] border-b border-[#181818]">
-        <Topbar />
+        <Topbar data={chatId} />
       </div>
       <div className="flex w-full h-full overflow-hidden">
         <div className="flex flex-col w-full xl:w-[60%] h-full mx-auto border border-black">
