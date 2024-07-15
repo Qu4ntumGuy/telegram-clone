@@ -79,7 +79,7 @@ function ChatPage() {
             ))}
           </div>
           <div className="bottom-0 mt-auto w-full pb-5">
-            <div className="flex pl-5 w-full items-center">
+            <div className="flex p-5 w-full items-center">
               <div className="flex p-3 w-[90%] rounded-2xl bg-[#202020] justify-center items-center">
                 <div>
                   <SentimentSatisfiedAltIcon />

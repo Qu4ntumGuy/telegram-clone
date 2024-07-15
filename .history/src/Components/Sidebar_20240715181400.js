@@ -65,8 +65,9 @@ function Sidebar() {
   const ref = useRef();
   return (
     <div
-      className={`
-         "hidden md:max-w-[26rem] w-full bg-[#202020] border-r border-[#181818] h-screen`}
+      className={`${
+        channels[0].id != null ? "hidden md:max-w-[26rem]" : "w-full"
+      } w-full  bg-[#202020] border-r border-[#181818] h-screen`}
     >
       <div className="flex items-center justify-start px-4 h-14 w-full">
         <div className="px-2 text-stone-300">

@@ -38,7 +38,7 @@ function Message({ text, sender, time, profile }) {
       }`}
     >
       {sender === null ? (
-        <div className="max-w-[30rem] flex justify-end items-end my-2 lg:mr-20">
+        <div className="max-w-[30rem] flex justify-end items-end my-2 mr-20">
           <div className="flex flex-col bg-[#181818] mr-2 rounded-xl p-2">
             <div className="text-yellow-500">
               {" "}
@@ -57,7 +57,7 @@ function Message({ text, sender, time, profile }) {
         </div>
       ) : (
         <div className=" max-w-[25rem] flex justify-start items-end my-2">
-          <div className="w-12">
+          <div>
             <div className="!h-11 !w-11 bg-gradient-to-br from-yellow-400 flex items-center justify-center font-semibold to-yellow-500 rounded-full">
               {profile ? profile : "D"}
             </div>

@@ -66,7 +66,7 @@ function ChatPage() {
         <Topbar />
       </div>
       <div className="flex w-full h-full overflow-hidden">
-        <div className="flex flex-col w-full xl:w-[60%] h-full mx-auto border border-black">
+        <div className="flex flex-col lg:w-[58%] h-full mx-auto border border-black">
           <div className="flex overflow-y-scroll scrollbar-hide flex-col justify-end items-center">
             {messages.map((message) => (
               <Message
@@ -79,7 +79,7 @@ function ChatPage() {
             ))}
           </div>
           <div className="bottom-0 mt-auto w-full pb-5">
-            <div className="flex pl-5 w-full items-center">
+            <div className="flex w-full items-center">
               <div className="flex p-3 w-[90%] rounded-2xl bg-[#202020] justify-center items-center">
                 <div>
                   <SentimentSatisfiedAltIcon />
