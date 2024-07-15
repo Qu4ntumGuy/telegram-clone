@@ -8,6 +8,28 @@ import { useParams } from "react-router-dom";
 function Sidebar() {
   const [page, setPage] = useState(1);
   const [channels, setChannels] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // const handleScroll = () => {
+  //   const windowHeight = window.innerHeight;
+  //   const documentHeight = document.body.scrollHeight;
+  //   const scrollTop = window.scrollY;
+  //   if (scrollTop + windowHeight >= documentHeight - 100) {
+  //     if (!isLoading) {
+  //       setIsLoading(true);
+  //       setPage((prev) => prev + 1);
+  //       fetchChannels();
+  //     }
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   handleScroll();
+  //   window.addEventListener("scroll", handleScroll); // Add event listener
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll); // Remove listener on unmount
+  //   };
+  // }, [channels, isLoading]); // Dependency array for useEffect
 
   const fetchChannels = async () => {
     try {
@@ -21,6 +43,7 @@ function Sidebar() {
       );
       //   console.log(res);
       setChannels(res.data.data.data);
+      return res;
       console.log(res.data.data.data);
     } catch (error) {
       console.log(error);
@@ -44,25 +67,16 @@ function Sidebar() {
     }
   }
 
-  console.log(formatString("John Doe")); // It will print JD
-
-  //   const name = formatString(channels[0]?.creator?.name);
-  //   console.log(name);
-
   function chooseColor() {
     const colors = ["red", "blue", "yellow", "cyan"];
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
   }
 
-  //   // Example usage
-  //   console.log(chooseColor()); // It will print a random color from the list
-
   useEffect(() => {
     fetchChannels();
-  }, []);
+  }, [page]);
 
-  const ref = useRef();
   return (
     <div
       className={`
@@ -86,7 +100,7 @@ function Sidebar() {
           </form>
         </div>
       </div>
-      <div className="overflow-y-auto px-2">
+      <div className="overflow-y-auto px-2 h-[55rem]">
         {channels.map((channel) => (
           <Chat
             key={channel.created_at}
@@ -98,6 +112,7 @@ function Sidebar() {
             chatId={channel.id}
           />
         ))}
+        {isLoading && <p>Loading...</p>}
       </div>
     </div>
   );

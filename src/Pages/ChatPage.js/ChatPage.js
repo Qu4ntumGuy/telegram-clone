@@ -67,7 +67,7 @@ function ChatPage() {
       </div>
       <div className="flex w-full h-full overflow-hidden">
         <div className="flex flex-col w-full xl:w-[60%] h-full mx-auto border border-black">
-          <div className="flex overflow-y-scroll scrollbar-hide flex-col justify-end items-center">
+          <div className="overflow-y-scroll scrollbar-hide h-full justify-end items-center">
             {messages.map((message) => (
               <Message
                 key={message.id}
@@ -75,6 +75,7 @@ function ChatPage() {
                 time={message.created_at}
                 sender={message.sender.name}
                 profile={formatString(String(message.sender.name))}
+                senderId={message.sender_id}
               />
             ))}
           </div>

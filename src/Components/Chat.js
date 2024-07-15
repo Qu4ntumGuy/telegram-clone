@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 function Chat({ name, profile, color, time, message, chatId }) {
+  console.log(color);
+
   function formatDateTime(input) {
     const date = new Date(input);
 
@@ -44,14 +46,16 @@ function Chat({ name, profile, color, time, message, chatId }) {
   return (
     <div
       onClick={openMessages}
-      className={`flex w-full p-2 items-center cursor-pointer justify-between hover:bg-stone-700 hover:bg-opacity-30 rounded-lg`}
+      className={`flex w-full p-2 items-center cursor-pointer justify-start hover:bg-stone-700 hover:bg-opacity-30 rounded-lg`}
     >
-      <div
-        className={`flex justify-center items-center text-xl font-semibold bg-gradient-to-br from-${color}-400 to-${color}-500 rounded-full w-14 h-14`}
-      >
-        {profile ? profile : "D"}
+      <div>
+        <div
+          className={`flex justify-center items-center text-xl font-semibold bg-gradient-to-br from-${color}-400 to-${color}-500 rounded-full w-14 h-14`}
+        >
+          {profile ? profile : "D"}
+        </div>
       </div>
-      <div className="flex flex-col w-[83%]">
+      <div className="flex flex-col pl-3 w-full">
         <div className="flex">
           <div className="font-semibold ">
             {name ? name : "Deleted Account"}
