@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import backgroundImage from "../../Assets/Desktop.webp";
+import backgroundImage from "../../Assets/backgroud.jpg";
 import Topbar from "../../Components/Topbar";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 import AttachmentIcon from "@mui/icons-material/Attachment";
@@ -59,8 +59,11 @@ function ChatPage() {
 
   return (
     <div
-      className="md:flex flex-col justify-center bg-cover h-screen overflow-hidden bg-black bg-opacity-100 hidden md:w-full "
-      //   style={{ backgroundImage: `url(${backgroundImage})` }}
+      className="md:flex flex-col justify-center bg-cover h-screen overflow-hidden hidden md:w-full "
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        background: "cover",
+      }}
     >
       <div className="top-0 sticky mb-auto h-14 bg-[#202020] border-b border-[#181818]">
         <Topbar data={chatId} />

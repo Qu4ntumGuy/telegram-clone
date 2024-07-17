@@ -39,14 +39,14 @@ function Message({ text, sender, time, profile, senderId }) {
     >
       {senderId !== 1 ? (
         <div className="max-w-[30rem] flex justify-end items-end my-2 lg:mr-20">
-          <div className="flex flex-col bg-[#181818] mr-2 rounded-xl p-2">
-            <div className="text-yellow-500">
+          <div className="flex flex-col bg-purple-500 bg-opacity-90 mr-2 rounded-xl p-2">
+            {/* <div className="text-yellow-400 font-semibold">
               {" "}
               {sender ? sender : "Deleted Account"}
-            </div>
+            </div> */}
             <div className="flex justify-between">
               <div>{text}</div>
-              <div className="text-xs flex justify-end items-end text-stone-500">
+              <div className="text-xs flex justify-end items-end ml-1 text-white">
                 {formatDateTime(time).t}
               </div>
             </div>
