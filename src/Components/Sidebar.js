@@ -84,9 +84,9 @@ function Sidebar() {
   return (
     <div
       className={`
-         "hidden md:max-w-[26rem] w-full bg-[#202020] border-r border-[#181818] h-screen`}
+         "hidden md:max-w-[26rem] w-full bg-[#202020] border-r overflow-hidden border-[#181818] h-screen`}
     >
-      <div className="flex items-center justify-start px-4 h-14 w-full">
+      <div className="flex sticky items-center justify-start px-4 h-14 w-full">
         <div className="px-2 text-stone-300">
           <MenuIcon />
         </div>
@@ -106,7 +106,7 @@ function Sidebar() {
       </div>
       <div
         onScroll={handleScroll}
-        className="overflow-y-auto px-2 scrollbar-hide h-[55rem]"
+        className="overflow-y-auto px-2 scrollbar-hide h-screen"
       >
         {channels.map((channel) => (
           <Chat
